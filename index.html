@@ -512,6 +512,7 @@
 
         // Lightbox Funktionen
         function openLightbox(imageSrc, imageList) {
+			document.documentElement.style.overflow = "hidden";
             images = imageList;
             currentIndex = images.indexOf(imageSrc);
             currentPosition = -currentIndex * 100;
@@ -532,6 +533,7 @@
         }
 
         function closeLightbox() {
+			document.documentElement.style.overflow = "";
             lightbox.classList.remove("active");
             document.body.style.overflow = "auto";
         }
@@ -568,6 +570,7 @@
         }
 
         function handleTouchMove(e) {
+			e.preventDefault();
             if (isAnimating) return;
             
             const touchX = e.touches[0].clientX;
