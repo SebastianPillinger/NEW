@@ -527,6 +527,7 @@
             sliderContainer.style.transform = `translateX(${currentPosition}%)`;
             lightbox.classList.add("active");
             document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
             preloadNeighbors(currentIndex);
         }
 
