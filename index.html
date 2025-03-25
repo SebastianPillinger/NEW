@@ -195,6 +195,13 @@
             transition: opacity 0.2s;
 			pointer-events: auto; /* Interaktion mit Inhalten ermöglichen */
         }
+		
+		@media (max-width: 768px) {
+			.lightbox-arrow {
+				font-size: 3em;    /* Kleinere Größe für Handys */
+				padding: 5px 10px; /* Kompakteres Padding */
+			}
+		}
 
         .lightbox-arrow:hover {
             opacity: 0.8;
