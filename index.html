@@ -180,23 +180,19 @@
 		}
 
 		.highlight-image {
-			width: 100%;
-			height: auto;
-			margin-left: 50%;
-			transform: translateX(-50%);
-			object-fit: cover;
+			width: 100%; /* Volle Breite des Containers */
+			height: auto; /* Höhe passt sich automatisch an */
 			display: block;
+			object-fit: cover; /* Optional: Bild füllt Bereich aus (mit Beschnitt) */
 			filter: brightness(0.9) contrast(1.1);
 		}
 
 		@media (max-width: 768px) {
 			.highlight-image {
-				height: 100vh; /* Behält das Seitenverhältnis bei */
-			}
-			
-			.highlight-text {
-				top: 10%;
-				font-size: clamp(1.5rem, 8vw, 2.5rem);
+				width: 100%; /* Volle Viewport-Breite */
+				height: auto; /* Original-Seitenverhältnis */
+				margin-left: 0; /* Zentrierung zurücksetzen */
+				transform: none; /* Zentrierung zurücksetzen */
 			}
 		}
 
