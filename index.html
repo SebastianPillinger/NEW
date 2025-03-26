@@ -29,6 +29,9 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+			width: 100%;
+			max-width: 100%;
+			box-sizing: border-box;
         }
 
         body {
@@ -348,6 +351,13 @@
 			.magazine-divider {
 				margin: 20px auto;
 			}
+			.highlight-banner {
+				display: block !important; /* Override falls nötig */
+				height: auto !important;
+			}
+			.highlight-banner img {
+				min-height: 300px; /* Fallback für mobile Geräte */
+			}
 		}
 		
 		/* Über mich */
@@ -548,16 +558,16 @@
     </section>
     
     <!-- Leistungen -->
-    <section class="highlight-banner">
-		<div class="magazine-overlay"></div>
-		<img src="bilder/highlight.jpg" alt="Art of Photography">
-		<div class="highlight-content">
-			<span class="magazine-subtitle">Neueste Arbeit</span>
-			<h3 class="magazine-title">Die Poesie des Augenblicks</h3>
-			<div class="magazine-divider"></div>
-			<p class="magazine-text">Hochzeitsfotografie zwischen Emotion & Eleganz</p>
-		</div>
-	</section>
+    <section id="services">
+        <h2>Leistungen</h2>
+        <ul style="list-style-type: none; font-size: 1.6em;">
+            <li>Hochzeitsfotografie</li>
+            <li>Event- und Partyfotografie</li>
+            <li>Unternehmensfotografie</li>
+            <li>Hotelfotografie</li>
+            <li>Industrie- und Architekturfotografie</li>
+        </ul>
+    </section>
     
     <!-- Kundenfeedback -->
     <section id="testimonials">
