@@ -916,14 +916,23 @@
 		
 		// Touch-Event für Highlight-Bereich
 		const highlightContainer = document.querySelector('.highlight-container');
+		let touchTimeout; // Timeout-Referenz
 
 		highlightContainer.addEventListener('touchstart', function() {
-		  this.classList.add('touch-active');
+		  // Verzögerung von 1 Sekunde (1000ms)
+		  touchTimeout = setTimeout(() => {
+			this.classList.add('touch-active');
+		  }, 500);
 		});
+		
+		// Timeout abbrechen bei...
+		highlightContainer.addEventListener('touchend', () => clearTimeout(touchTimeout));
+		highlightContainer.addEventListener('touchmove', () => clearTimeout(touchTimeout));
 
 		// Optional: Text wieder ausblenden wenn woanders hingetippt wird
 		document.addEventListener('touchstart', function(e) {
 		  if (!highlightContainer.contains(e.target)) {
+			clearTimeout(touchTimeout); // Wichtig!
 			highlightContainer.classList.remove('touch-active');
 		  }
 		});
