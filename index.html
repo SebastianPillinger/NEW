@@ -43,6 +43,30 @@
             line-height: 1.6;
         }
 		
+		/* Scroll-Animation definieren */
+		@keyframes fadeInUp {
+		  from {
+			opacity: 0;
+			transform: translateY(50px);
+		  }
+		  to {
+			opacity: 1;
+			transform: translateY(0);
+		  }
+		}
+
+		/* 2. Basisklasse für alle animierten Elemente */
+		.scroll-animation {
+		  opacity: 0;
+		  animation-duration: 1s;
+		  animation-fill-mode: forwards;
+		}
+
+		/* 3. Animation auslösen wenn sichtbar */
+		.animate {
+		  animation-name: fadeInUp;
+		}
+		
 		/* Header mit Hintergrundbild */
 		header {
 			position: relative;
@@ -254,30 +278,137 @@
 			}
 		}
 		
-		/* Highlight */
-		
+		/* Highlight Styles */
 		.highlight {
-		  position: relative; 
-		  margin: 20px 0;
+			position: relative;
+			margin: 80px 0;
+			padding: 0 20px;
 		}
 
-		.content-image {
-		  width: 100%;
-		  height: auto;
-		  display: block;
-		  border-radius: 0; /* Wie bei deinem Portrait-Bild */
+		.highlight-container {
+			position: relative;
+			border-radius: 15px;
+			overflow: hidden;
+			transition: transform 0.5s var(--transition-timing);
+			max-width: 1400px;
+			margin: 0 auto;
 		}
 
-		.image-title {
-		  position: absolute;
-		  top: 50%;
-		  left: 50%;
-		  transform: translate(-50%, -50%);
-		  color: white;
-		  margin: 0;
-		  text-align: center;
-		  text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Wie bei deinem Über-mich-Text */
+		.highlight-image {
+			width: 100%;
+			height: 600px;
+			object-fit: cover;
+			transition: transform 1.2s var(--transition-timing);
 		}
+
+		.highlight-content {
+			position: absolute;
+			bottom: 15%;
+			left: 5%;
+			color: white;
+			text-align: left;
+			max-width: 600px;
+			z-index: 2;
+		}
+
+		.highlight-title {
+			font-family: 'Playfair Display', serif;
+			font-size: 3.5em;
+			margin: 0;
+			line-height: 1.1;
+			text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+			transform: translateY(30px);
+			opacity: 0;
+			transition: all 1s var(--transition-timing);
+		}
+
+		.highlight-subtitle {
+			font-size: 1.5em;
+			margin: 15px 0 25px;
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 1s var(--transition-timing) 0.1s;
+		}
+
+		.highlight-cta {
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 1s var(--transition-timing) 0.2s;
+			display: inline-flex;
+			align-items: center;
+			backdrop-filter: blur(5px);
+			background: rgba(76, 175, 80, 0.9);
+			border: 2px solid rgba(255,255,255,0.2);
+		}
+
+		.highlight-cta .arrow {
+			margin-left: 10px;
+			transition: transform 0.3s ease;
+		}
+
+		/* Hover Effects */
+		.highlight-container:hover .highlight-image {
+			transform: scale(1.05);
+		}
+
+		.highlight-container:hover .highlight-title,
+		.highlight-container:hover .highlight-subtitle,
+		.highlight-container:hover .highlight-cta {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		.highlight-cta:hover {
+			background: rgba(69, 160, 73, 0.95);
+			transform: scale(1.05) !important;
+		}
+
+		.highlight-cta:hover .arrow {
+			transform: translateX(5px);
+		}
+
+		/* Gradient Overlay */
+		.highlight-container::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(45deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%);
+			z-index: 1;
+			transition: opacity 1s ease;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.highlight-image {
+				height: 400px;
+			}
+
+			.highlight-content {
+				bottom: 10%;
+				left: 5%;
+				right: 5%;
+			}
+
+			.highlight-title {
+				font-size: 2.5em;
+			}
+
+			.highlight-subtitle {
+				font-size: 1.2em;
+			}
+
+			/* Mobile immer sichtbar */
+			.highlight-title,
+			.highlight-subtitle,
+			.highlight-cta {
+				opacity: 1 !important;
+				transform: translateY(0) !important;
+			}
+		}
+
 		
 		/* Über mich */
 		.about-container {
@@ -436,7 +567,7 @@
     </header>
     
     <!-- Portfolio -->
-    <section id="portfolio">
+    <section id="portfolio" class="scroll-animation">
         <h2>Portfolio</h2>
         <div class="portfolio-section" id="portfolio-gallery">
             <!-- Bilder werden dynamisch geladen -->
@@ -450,15 +581,25 @@
     </div>
 	
 	<!-- Highlight -->
-	<section class="highlight">
-	  <img src="bilder/highlight.jpg" 
-		   alt="Highlight" 
-		   class="content-image">
-	  <h3 class="image-title">Aktuelles Highlight</h3>
+	<section class="highlight scroll-animation">
+		<div class="highlight-container">
+			<img src="bilder/highlight.jpg" 
+				 alt="Aktuelles Highlight" 
+				 class="highlight-image"
+				 loading="lazy">
+			<div class="highlight-content">
+				<h3 class="highlight-title">Hochzeitssaison 2025</h3>
+				<p class="highlight-subtitle">Emotionen in Perfektion eingefangen</p>
+				<a href="#contact" class="cta-button highlight-cta" aria-label="Jetzt Termin anfragen">
+					Jetzt Termin anfragen
+					<span class="arrow">→</span>
+				</a>
+			</div>
+		</div>
 	</section>
 	
 	<!-- Über mich -->
-    <section id="about">
+    <section id="about" class="scroll-animation">
         <h2>Über mich</h2>
         <div class="about-container">
             <div class="about-text">
@@ -473,7 +614,7 @@
     </section>
     
     <!-- Leistungen -->
-    <section id="services">
+    <section id="services" class="scroll-animation">
         <h2>Leistungen</h2>
         <ul style="list-style-type: none; font-size: 1.6em;">
             <li>Hochzeitsfotografie</li>
@@ -485,7 +626,7 @@
     </section>
     
     <!-- Kundenfeedback -->
-    <section id="testimonials">
+    <section id="testimonials" class="scroll-animation">
         <h2>Kundenfeedback</h2>
         <div class="testimonials">
             <div class="testimonial">
@@ -500,7 +641,7 @@
     </section>
     
     <!-- Kontakt -->
-    <section id="contact">
+    <section id="contact" class="scroll-animation">
         <h2>Kontakt</h2>
         <p>Ich freue mich über deine Anfrage!</p>
         <p>Email: <span class="contact-link" onclick="copyToClipboard('sebastian.pillinger@gmx.at')">sebastian.pillinger@gmx.at</span></p>
@@ -519,6 +660,22 @@
     </footer>
 
     <script>
+	
+	// Scroll-Animation
+		const observer = new IntersectionObserver((entries) => {
+		  entries.forEach(entry => {
+			if(entry.isIntersecting) {
+			  entry.target.classList.add('animate');
+			}
+		  });
+		}, {
+		  threshold: 0.1 // Animation startet bei 10% Sichtbarkeit
+		});
+
+		// 5. Alle Elemente mit der Klasse markieren
+		document.querySelectorAll('.scroll-animation').forEach(element => {
+		  observer.observe(element);
+		});
         // Portfolio-Daten und Initialisierung
         const portfolioData = [
             { src: "bilder/linzm1.jpg", alt: "Linz-Marathon", images: ["bilder/linzm1.jpg", "bilder/linzm2.jpg", "bilder/linzm3.jpg"] },
