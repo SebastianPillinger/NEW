@@ -191,11 +191,11 @@
 
 		@media (max-width: 768px) {
 			.highlight-image {
-				width: 100%;
-				height: auto;
-				margin-left: 0;
-				transform: none;
-				min-height: 60vh;
+				width: 100vw; /* Statt 100% (verhindert Lücken) */
+				height: auto; /* Behält das Seitenverhältnis bei */
+				min-height: 60vh; /* Fallback für sehr schmale Viewports */
+				margin-left: 50%;
+				transform: translateX(-50%);
 			}
 			
 			.highlight-text {
