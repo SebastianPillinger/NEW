@@ -156,6 +156,53 @@
 			position: relative; /* Damit der Inhalt nicht verdeckt wird */
 			z-index: 1; /* Inhalt über der Navigationsleiste */
 		}
+		
+		/* Highlight Section */
+		.highlight-section {
+			position: relative;
+			margin: 80px 0;
+			overflow: hidden;
+		}
+
+		.highlight-text {
+			position: absolute;
+			top: 15%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(2rem, 5vw, 4rem);
+			color: var(--light);
+			text-align: center;
+			text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+			z-index: 1;
+			max-width: 90%;
+			line-height: 1.2;
+		}
+
+		.highlight-image {
+			width: 100vw;
+			height: 80vh;
+			margin-left: 50%;
+			transform: translateX(-50%);
+			object-fit: cover;
+			display: block;
+			filter: brightness(0.9) contrast(1.1);
+		}
+
+		@media (max-width: 768px) {
+			.highlight-image {
+				width: 100%;
+				height: auto;
+				margin-left: 0;
+				transform: none;
+				min-height: 60vh;
+			}
+			
+			.highlight-text {
+				top: 10%;
+				font-size: clamp(1.5rem, 8vw, 2.5rem);
+			}
+		}
 
         /* Portfolio Section */
         .portfolio-section {
@@ -469,6 +516,11 @@
         </div>
         <div class="scroll-indicator"></div>
     </header>
+	
+	<section class="highlight-section scroll-animation">
+		<div class="highlight-text">Momente der Perfektion</div>
+		<img src="bilder/highlight.jpg" alt="Highlight" class="highlight-image">
+	</section>
     
     <!-- Portfolio -->
     <section id="portfolio" class="scroll-animation">
@@ -555,7 +607,7 @@
 			}
 		  });
 		}, {
-		  threshold: 0.1 // Animation startet bei 10% Sichtbarkeit
+		  threshold: 0.33 // Animation startet bei 10% Sichtbarkeit
 		});
 
 		// 5. Alle Elemente mit der Klasse markieren
