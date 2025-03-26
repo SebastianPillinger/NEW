@@ -381,12 +381,24 @@
 			transform: translate(0);
 		}
 
+		/* Für Desktop (Hover) */
+		@media (min-width: 769px) {
+		  .highlight-container:hover .highlight-content h3,
+		  .highlight-container:hover .highlight-subline,
+		  .highlight-container:hover .highlight-meta {
+			opacity: 1;
+			transform: translateY(0);
+		  }
+		}
+
+		/* Für Mobile (Touch) */
 		@media (max-width: 768px) {
-			.highlight-image {
-				width: 100%;
-				opacity: 1;
-				transform: translateY(0);
-			}
+		  .highlight-container.touch-active .highlight-content h3,
+		  .highlight-container.touch-active .highlight-subline,
+		  .highlight-container.touch-active .highlight-meta {
+			opacity: 1;
+			transform: translateY(0);
+		  }
 		}
 		
 		/* Über mich */
@@ -884,6 +896,20 @@
 					});
 				}
 			});
+		});
+		
+		// Touch-Event für Highlight-Bereich
+		const highlightContainer = document.querySelector('.highlight-container');
+
+		highlightContainer.addEventListener('touchstart', function() {
+		  this.classList.add('touch-active');
+		});
+
+		// Optional: Text wieder ausblenden wenn woanders hingetippt wird
+		document.addEventListener('touchstart', function(e) {
+		  if (!highlightContainer.contains(e.target)) {
+			highlightContainer.classList.remove('touch-active');
+		  }
 		});
     </script>
 </body>
