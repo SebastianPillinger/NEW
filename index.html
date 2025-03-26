@@ -16,12 +16,12 @@
 	
 		/* Allgemeine Stile */
 		:root {
-			--primary-color: #4CAF50;
-			--secondary-color: #45a049;
-			--dark-color: #2C2C2C;
-			--light-color: #f9f9f9;
-			--background-color: #1a1a1a;
-			--text-color: #f9f9f9;
+			--accent1-color:    hsl(123, 35%, 50%);
+			--accent2-color:    hsl(123, 45%, 40%);
+			--dark-color:  	    hsl(0, 0%, 17%);
+			--background0-color: hsl(0, 0%, 10%);
+			--background1-color: hsl(0, 0%, 12%);
+			--text-color:       hsl(0, 0%, 98%);
 			--transition-timing: cubic-bezier(0.22, 0.61, 0.36, 1);
 		}
 
@@ -39,7 +39,7 @@
 			margin: 0;
 			padding: 0;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: var(--background0-color);
             line-height: 1.6;
         }
 		
@@ -125,7 +125,7 @@
 		}
 
 		nav a:hover {
-			color: var(--primary-color);
+			color: var(--accent1-color);
 		}
 		
 		/* Abschnitte */
@@ -140,6 +140,7 @@
 
         /* Portfolio Section */
         .portfolio-section {
+			background: var(--background1-color);
             padding: 40px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -278,145 +279,13 @@
 			}
 		}
 		
-		/* Highlight Styles */
-		.highlight {
-			position: relative;
-			margin: 80px 0;
-			padding: 0 20px;
-		}
-
-		.highlight-container {
-			position: relative;
-			border-radius: 15px;
-			overflow: hidden;
-			transition: transform 0.5s var(--transition-timing);
-			max-width: 1400px;
-			margin: 0 auto;
-		}
-
-		.highlight-image {
-			width: 100%;
-			height: 600px;
-			object-fit: cover;
-			transition: transform 1.2s var(--transition-timing);
-		}
-
-		.highlight-content {
-			position: absolute;
-			bottom: 15%;
-			left: 5%;
-			color: white;
-			text-align: left;
-			max-width: 600px;
-			z-index: 2;
-		}
-
-		.highlight-title {
-			font-family: 'Playfair Display', serif;
-			font-size: 3.5em;
-			margin: 0;
-			line-height: 1.1;
-			text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-			transform: translateY(30px);
-			opacity: 0;
-			transition: all 1s var(--transition-timing);
-		}
-
-		.highlight-subtitle {
-			font-size: 1.5em;
-			margin: 15px 0 25px;
-			opacity: 0;
-			transform: translateY(30px);
-			transition: all 1s var(--transition-timing) 0.1s;
-		}
-
-		.highlight-cta {
-			opacity: 0;
-			transform: translateY(30px);
-			transition: all 1s var(--transition-timing) 0.2s;
-			display: inline-flex;
-			align-items: center;
-			backdrop-filter: blur(5px);
-			background: rgba(76, 175, 80, 0.9);
-			border: 2px solid rgba(255,255,255,0.2);
-		}
-
-		.highlight-cta .arrow {
-			margin-left: 10px;
-			transition: transform 0.3s ease;
-		}
-
-		/* Hover Effects */
-		.highlight-container:hover .highlight-image {
-			transform: scale(1.05);
-		}
-
-		.highlight-container:hover .highlight-title,
-		.highlight-container:hover .highlight-subtitle,
-		.highlight-container:hover .highlight-cta {
-			transform: translateY(0);
-			opacity: 1;
-		}
-
-		.highlight-cta:hover {
-			background: rgba(69, 160, 73, 0.95);
-			transform: scale(1.05) !important;
-		}
-
-		.highlight-cta:hover .arrow {
-			transform: translateX(5px);
-		}
-
-		/* Gradient Overlay */
-		.highlight-container::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: linear-gradient(45deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%);
-			z-index: 1;
-			transition: opacity 1s ease;
-		}
-
-		/* Responsive Design */
-		@media (max-width: 768px) {
-			.highlight-image {
-				height: 400px;
-			}
-
-			.highlight-content {
-				bottom: 10%;
-				left: 5%;
-				right: 5%;
-			}
-
-			.highlight-title {
-				font-size: 2.5em;
-			}
-
-			.highlight-subtitle {
-				font-size: 1.2em;
-			}
-
-			/* Mobile immer sichtbar */
-			.highlight-title,
-			.highlight-subtitle,
-			.highlight-cta {
-				opacity: 1 !important;
-				transform: translateY(0) !important;
-			}
-		}
-
-		
 		/* Über mich */
 		.about-container {
 			display: flex;
 			align-items: center;
 			gap: 40px;
 			text-align: left;
-			background-color: var(--background-color);
+			background-color: var(--background1-color);
 			padding: 40px;
 			border-radius: 10px;
 			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -449,14 +318,14 @@
 			padding: 15px 30px;
 			font-size: 1.2em;
 			color: white;
-			background-color: var(--primary-color);
+			background-color: var(--accent1-color);
 			border-radius: 5px;
 			text-decoration: none;
 			transition: background-color 0.3s ease, transform 0.3s ease;
 		}
 
 		.cta-button:hover {
-			background-color: var(--secondary-color);
+			background-color: var(--accent2-color);
 			transform: scale(1.1);
 			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
 		}
@@ -467,7 +336,7 @@
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 			gap: 20px;
 			padding: 40px;
-			background-color: var(--background-color);
+			background-color: var(--background1-color);
 			border-radius: 10px;
 			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 		}
@@ -475,8 +344,8 @@
 		.testimonial {
 			text-align: left;
 			padding: 20px;
-			border-left: 4px solid var(--primary-color);
-			background-color: var(--background-color);
+			border-left: 4px solid var(--accent1-color);
+			background-color: var(--background1-color);
 		}
 
 		.testimonial p {
@@ -493,7 +362,7 @@
 		
 		/* Kontakt */
 		#contact {
-			background-color: var(--dark-color);
+			background-color: var(--background1-color);;
 			color: white; /* Textfarbe im Kontaktbereich immer weiß */
 			padding: 60px 20px;
 			border-radius: 10px;
@@ -510,7 +379,7 @@
 		}
 
 		.contact-link {
-			color: var(--primary-color);
+			color: var(--accent1-color);
 			text-decoration: none;
 			font-weight: bold;
 			cursor: pointer;
@@ -518,7 +387,7 @@
 		}
 
 		.contact-link:hover {
-			color: var(--secondary-color);
+			color: var(--accent2-color);
 		}
 		
 		/* Footer */
@@ -532,13 +401,13 @@
 		}
 
 		footer a {
-			color: var(--primary-color);
+			color: var(--accent1-color);
 			text-decoration: none;
 			transition: color 0.3s ease;
 		}
 
 		footer a:hover {
-			color: var(--secondary-color);
+			color: var(--accent2-color);
 		}
 
 		/* Responsive Design */
@@ -580,24 +449,6 @@
 		<span class="lightbox-arrow right" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
     </div>
 	
-	<!-- Highlight -->
-	<section class="highlight scroll-animation">
-		<div class="highlight-container">
-			<img src="bilder/highlight.jpg" 
-				 alt="Aktuelles Highlight" 
-				 class="highlight-image"
-				 loading="lazy">
-			<div class="highlight-content">
-				<h3 class="highlight-title">Hochzeitssaison 2025</h3>
-				<p class="highlight-subtitle">Emotionen in Perfektion eingefangen</p>
-				<a href="#contact" class="cta-button highlight-cta" aria-label="Jetzt Termin anfragen">
-					Jetzt Termin anfragen
-					<span class="arrow">→</span>
-				</a>
-			</div>
-		</div>
-	</section>
-	
 	<!-- Über mich -->
     <section id="about" class="scroll-animation">
         <h2>Über mich</h2>
@@ -605,7 +456,7 @@
             <div class="about-text">
                 <p>Hallo, ich bin Sebastian Pillinger, ein 33-jähriger Fotograf aus Graz. Seit 2025 bin ich selbstständig und blicke auf über 10 Jahre Erfahrung in der Fotografie zurück.</p>
                 <p>Meine Leidenschaft gilt der kreativen Gestaltung von Momenten – ob bei Hochzeiten, Events oder industriellen Projekten. Ich arbeite regelmäßig mit professionellen Fotografen zusammen und liebe es, Geschichten durch meine Bilder zu erzählen.</p>
-                <a href="#contact" class="cta-button" aria-label="Kontaktiere mich">Kontaktiere mich</a>
+                <a href="#contact" class="cta-button" aria-label="Kontaktiere mich">Jetzt Termin vereinbaren</a>
             </div>
             <div class="about-image">
                 <img src="bilder/portrait.jpg" alt="Sebastian Pillinger" loading="lazy">
@@ -678,12 +529,12 @@
 		});
         // Portfolio-Daten und Initialisierung
         const portfolioData = [
-            { src: "bilder/linzm1.jpg", alt: "Linz-Marathon", images: ["bilder/linzm1.jpg", "bilder/linzm2.jpg", "bilder/linzm3.jpg"] },
+            { src: "bilder/linzm1.jpg", alt: "Events", images: ["bilder/linzm1.jpg", "bilder/linzm2.jpg", "bilder/linzm3.jpg"] },
             { src: "bilder/rr1.jpg", alt: "Kasberg-Inferno", images: ["bilder/rr1.jpg", "bilder/rr2.jpg", "bilder/rr3.jpg", "bilder/rr4.jpg", "bilder/rr5.jpg"] },
-            { src: "bilder/hochzeit1.jpg", alt: "Hochzeitsfotografie", images: ["bilder/hochzeit1.jpg", "bilder/hochzeit2.jpg", "bilder/hochzeit3.jpg"] },
+            { src: "bilder/hochzeit1.jpg", alt: "Hochzeiten", images: ["bilder/hochzeit1.jpg", "bilder/hochzeit2.jpg", "bilder/hochzeit3.jpg"] },
             { src: "bilder/tiere1.jpg", alt: "Haustiere", images: ["bilder/tiere1.jpg", "bilder/tiere2.jpg", "bilder/tiere3.jpg", "bilder/tiere4.jpg", "bilder/tiere5.jpg", "bilder/tiere6.jpg", "bilder/tiere7.jpg", "bilder/tiere8.jpg"] },
             { src: "bilder/wildlife1.jpg", alt: "Wildlife", images: ["bilder/wildlife1.jpg", "bilder/wildlife2.jpg", "bilder/wildlife3.jpg", "bilder/wildlife4.jpg", "bilder/wildlife5.jpg", "bilder/wildlife6.jpg"] },
-            { src: "bilder/party1.jpg", alt: "Partyfotografie", images: ["bilder/party1.jpg", "bilder/party2.jpg", "bilder/party3.jpg"] }
+            { src: "bilder/party1.jpg", alt: "Partys", images: ["bilder/party1.jpg", "bilder/party2.jpg", "bilder/party3.jpg"] }
         ];
 
         // DOM Elemente
