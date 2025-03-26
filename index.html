@@ -48,6 +48,11 @@
             line-height: 1.6;
         }
 		
+		@font-face {
+			font-family: 'Anurati';
+			src: url('fonts/anurati.ttf') format('truetype');
+		}
+		
 		/* Scroll-Animation definieren */
 		@keyframes fadeInUp {
 		  from {
@@ -88,7 +93,7 @@
         }
 
         .name-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Anurati','Playfair Display', serif;
             font-weight: 700;
             letter-spacing: -0.03em;
             line-height: 0.9;
@@ -265,7 +270,7 @@
 		}
 
 		.overlay-text {
-			font-family: 'Anurati', sans-serif;
+			font-family: 'Anurati', 'Playfair Display', sans-serif;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -378,7 +383,9 @@
 
 		@media (max-width: 768px) {
 			.highlight-image {
-				height: 60vh;
+				width: 100%;
+				opacity: 1;
+				transform: translateY(0);
 			}
 		}
 		
@@ -556,6 +563,7 @@
                 <p class="location">📍 Graz & Österreichweit</p>
                 <div class="awards">
                     <span>🏆 Bester Eventfotograf 2023</span>
+					<br>
                     <span>📸 10+ Jahre Erfahrung</span>
                 </div>
             </div>
