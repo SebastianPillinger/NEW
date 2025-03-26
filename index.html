@@ -889,35 +889,11 @@
 			});
 		});
 		
-		let isDragging = false;
+		// Touch-Event für Highlight-Bereich
+		const highlightContainer = document.querySelector('.highlight-container');
 
-		highlightContainer.addEventListener('touchstart', (e) => {
-		  e.preventDefault();
-		  isDragging = false; // Reset bei neuem Touch
-		  highlightContainer.classList.add('touch-active');
-		});
-
-		highlightContainer.addEventListener('touchmove', (e) => {
-		  isDragging = true; // Markiere aktives Wischen
-		  // Optional: Effekt während Wischen beibehalten
-		  highlightContainer.classList.add('touch-active');
-		});
-
-		highlightContainer.addEventListener('touchend', (e) => {
-		  // Nur deaktivieren wenn nicht gewischt wurde
-		  if(!isDragging) highlightContainer.classList.remove('touch-active');
-		});
-
-		// Effekt bei Klick/Tap ausschalten
-		highlightContainer.addEventListener('click', (e) => {
-		  if(!isDragging) highlightContainer.classList.remove('touch-active');
-		});
-
-		// Außerhalb berühren = Effekt aus
-		document.addEventListener('touchstart', (e) => {
-		  if(!highlightContainer.contains(e.target)) {
-			highlightContainer.classList.remove('touch-active');
-		  }
+		highlightContainer.addEventListener('touchstart', function() {
+		  this.classList.add('touch-active');
 		});
 
 		// Optional: Text wieder ausblenden wenn woanders hingetippt wird
