@@ -302,9 +302,17 @@
 		/* Highlight */
 		.highlight {
 			width: 80%;       /* Breite */
-			height: auto;       /* Höhe automatisch anpassen */
-			margin: 50px;       /* Abstand außerhalb */
-			padding: 5px;       /* Abstand innerhalb */
+			height: auto;     /* Höhe automatisch anpassen */
+			margin: 50px auto; /* Zentriert das Bild mit automatischen Seitenrändern */
+			padding: 5px;     /* Abstand innerhalb */
+			display: block;   /* Stellt sicher, dass es als Block-Element gerendert wird */
+		}
+		
+		@media (max-width: 768px) {
+			.highlight {
+				width: 95%;   /* Größere Breite auf Mobilgeräten */
+				margin: 20px auto; /* Kleinere Ränder */
+			}
 		}
 		
 		/* Über mich */
@@ -495,7 +503,7 @@
 	
 	
 		
-		<img src="bilder/highlight.jpg" alt="Highlight" class="highlight">
+	<img src="bilder/highlight.jpg" alt="Highlight" class="highlight" style="border: 2px solid red;">
 	
 	
 	<!-- Über mich -->
