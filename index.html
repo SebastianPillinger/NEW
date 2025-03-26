@@ -180,8 +180,8 @@
 		}
 
 		.highlight-image {
-			width: 100vw;
-			height: 80vh;
+			width: 100%;
+			height: auto;
 			margin-left: 50%;
 			transform: translateX(-50%);
 			object-fit: cover;
@@ -516,11 +516,6 @@
         </div>
         <div class="scroll-indicator"></div>
     </header>
-	
-	<section class="highlight-section scroll-animation">
-		<div class="highlight-text">Momente der Perfektion</div>
-		<img src="bilder/highlight.jpg" alt="Highlight" class="highlight-image">
-	</section>
     
     <!-- Portfolio -->
     <section id="portfolio" class="scroll-animation">
@@ -535,6 +530,11 @@
         <span class="lightbox-arrow left" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
 		<span class="lightbox-arrow right" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
     </div>
+	
+	<section class="highlight-section scroll-animation">
+		<div class="highlight-text">Momente der Perfektion</div>
+		<img src="bilder/highlight.jpg" alt="Highlight" class="highlight-image">
+	</section>
 	
 	<!-- Über mich -->
     <section id="about" class="scroll-animation">
