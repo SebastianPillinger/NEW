@@ -381,6 +381,15 @@
 			opacity: 1;
 			transform: translate(0);
 		}
+		/* Dunkler & kontrastreicher beim Aktivieren */
+		.highlight-container.touch-active .highlight-image {
+		  filter: brightness(0.7) contrast(1.2) !important;
+		}
+
+		/* Stellt sicher, dass die Transition auch für den Filter gilt */
+		.highlight-image {
+		  transition: filter 0.3s ease, transform 0.8s var(--transition-timing);
+		}
 
 		/* Für Desktop (Hover) */
 		@media (min-width: 769px) {
