@@ -391,16 +391,6 @@
 			transform: translateY(0);
 		  }
 		}
-
-		/* Für Mobile (Touch) */
-		@media (max-width: 768px) {
-		  .highlight-container.touch-active .highlight-content h3,
-		  .highlight-container.touch-active .highlight-subline,
-		  .highlight-container.touch-active .highlight-meta {
-			opacity: 1;
-			transform: translateY(0);
-		  }
-		}
 		
 		/* Über mich */
 		.about-container {
@@ -897,6 +887,28 @@
 					});
 				}
 			});
+		});
+		
+		let isTouched = false;
+
+		highlightContainer.addEventListener('touchstart', function(e) {
+		  e.preventDefault(); // Verhindert doppelte Auslösung
+		  this.classList.add('touch-active');
+		  isTouched = true;
+		  
+		  // Entfernt die Klasse erst nach 5 Sekunden (optional)
+		  setTimeout(() => {
+			if(isTouched) this.classList.remove('touch-active');
+		  }, 5000);
+		});
+		
+		// Füge diesen neuen Listener hinzu
+		highlightContainer.addEventListener('click', function(e) {
+		  if(isTouched) {
+			e.preventDefault();
+			e.stopPropagation();
+			isTouched = false;
+		  }
 		});
 		
 		// Touch-Event für Highlight-Bereich
