@@ -299,19 +299,86 @@
 			}
 		}
 		
-		/* Highlight */
-		.highlight {
-			width: 80%;       /* Breite */
-			height: auto;     /* Höhe automatisch anpassen */
-			margin: 50px auto; /* Zentriert das Bild mit automatischen Seitenrändern */
-			padding: 5px;     /* Abstand innerhalb */
-			display: block;   /* Stellt sicher, dass es als Block-Element gerendert wird */
+		/* Highlight Section */
+		.highlight-section {
+			position: relative;
+			margin: 100px 0;
+			padding: 20px;
 		}
-		
+
+		.highlight-container {
+			position: relative;
+			max-width: 1400px;
+			margin: 0 auto;
+			border-radius: 0px;
+			overflow: hidden;
+			box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+			transition: transform 0.8s var(--transition-timing);
+		}
+
+		.highlight-container:hover {
+			transform: scale(1.02);
+		}
+
+		.highlight-image {
+			width: 100%;
+			height: 80vh;
+			object-fit: cover;
+			filter: grayscale(20%) contrast(110%);
+			transition: filter 0.8s ease;
+		}
+
+		.highlight-container:hover .highlight-image {
+			filter: grayscale(0%) contrast(120%) brightness(70%);
+		}
+
+		.highlight-content {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			width: 100%;
+			padding: 20px;
+			position: absolute;
+			color: var(--light);
+			text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+		}
+
+		.highlight-content h3 {
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			margin: 0;
+			line-height: 1.1;
+			opacity: 0;
+			transform: translateY(50px);
+			transition: all 0.8s var(--transition-timing);
+		}
+
+		.highlight-subline {
+			font-family: 'Roboto', sans-serif;
+			font-size: clamp(1rem, 1.5vw, 1.2rem);
+			letter-spacing: 0.15em;
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 0.8s var(--transition-timing) 0.1s;
+		}
+
+		.highlight-meta {
+			margin-top: 20px;
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 0.8s var(--transition-timing) 0.2s;
+		}
+
+		.highlight-container:hover .highlight-content h3,
+		.highlight-container:hover .highlight-subline,
+		.highlight-container:hover .highlight-meta {
+			opacity: 1;
+			transform: translate(0);
+		}
+
 		@media (max-width: 768px) {
-			.highlight {
-				width: 95%;   /* Größere Breite auf Mobilgeräten */
-				margin: 20px auto; /* Kleinere Ränder */
+			.highlight-image {
+				height: 60vh;
 			}
 		}
 		
@@ -426,6 +493,16 @@
 			color: var(--accent2-color);
 		}
 		
+		@media (max-width: 768px) {
+		  #contact p {
+			font-size: 1.2em; /* Betrifft alle Absätze */
+		  }
+		  
+		  #contact p:last-child a {
+			font-size: 1em;    /* Nur Social Media Links */
+		  }
+		}
+		
 		/* Footer */
 		footer {
 			background: var(--dark-color);
@@ -503,7 +580,19 @@
 	
 	
 		
-	<img src="bilder/highlight.jpg" alt="Highlight" class="highlight" style="border: 2px solid red;">
+	<section class="highlight-section scroll-animation">
+		<div class="highlight-container">
+			<img src="bilder/highlight.jpg" alt="Meisterwerk der Eventfotografie" loading="lazy" class="highlight-image">
+			<div class="highlight-content">
+				<h3>Aktuelles Highlight</h3>
+				<p class="highlight-subline">Norwegen: Trondheim Universität NTNU</p>
+				<div class="highlight-meta">
+					<span>🏆 Ausgezeichnete Bildkomposition</span>
+					<span>✨ Premium Post-Production</span>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	
 	<!-- Über mich -->
