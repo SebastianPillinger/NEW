@@ -462,34 +462,257 @@
 			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
 		}
 		
-		/* Kundenfeedback */
-		.testimonials {
+		/* Leistungsbereich Stile */
+		.services-container {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 20px;
-			padding: 40px;
-			background-color: var(--background1-color);
-			border-radius: 10px;
-			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-		}
-
-		.testimonial {
-			text-align: left;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			max-width: 1200px;
+			margin: 0 auto;
 			padding: 20px;
-			border-left: 4px solid var(--accent1-color);
-			background-color: var(--background1-color);
 		}
 
-		.testimonial p {
-			font-size: 1.2em;
+		.service-card {
+			background: var(--background1-color);
+			border-radius: 0px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+			transition: transform 0.5s var(--transition-timing), box-shadow 0.5s ease;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.service-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+		}
+
+		.service-image {
+			height: 250px;
+			overflow: hidden;
+		}
+
+		.service-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.8s ease;
+		}
+
+		.service-card:hover .service-image img {
+			transform: scale(1.05);
+		}
+
+		.service-content {
+			padding: 25px;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.service-content h3 {
+			font-size: 1.8rem;
+			margin: 0 0 15px 0;
+			color: var(--accent1);
+			position: relative;
+			padding-bottom: 10px;
+		}
+
+		.service-content h3::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 50px;
+			height: 2px;
+			background: var(--accent1);
+		}
+
+		.service-content p {
+			font-size: 1.1rem;
+			line-height: 1.6;
+			margin-bottom: 20px;
 			color: var(--text-color);
 		}
 
-		.testimonial cite {
+		.service-features {
+			margin: 20px 0;
+			padding: 0;
+			list-style: none;
+			flex-grow: 1;
+		}
+
+		.service-features li {
+			padding: 8px 0;
+			font-size: 1rem;
+			position: relative;
+			padding-left: 25px;
+			color: var(--text-color);
+		}
+
+		.service-features li::before {
+			content: '✓';
+			position: absolute;
+			left: 0;
+			color: var(--accent1);
+			font-weight: bold;
+		}
+
+		.service-price {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: var(--accent1);
+			margin: 15px 0;
+			text-align: right;
+		}
+
+		.service-button {
 			display: block;
-			margin-top: 10px;
-			font-size: 1em;
-			color: #777;
+			text-align: center;
+			padding: 12px 20px;
+			background: var(--accent1);
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+			border-radius: 0px;
+			transition: all 0.3s ease;
+			margin-top: auto;
+		}
+
+		.service-button:hover {
+			background: var(--accent2);
+			transform: translateY(-3px);
+			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.services-container {
+				grid-template-columns: 1fr;
+				padding: 10px;
+			}
+			
+			.service-content h3 {
+				font-size: 1.5rem;
+			}
+			
+			.service-content p {
+				font-size: 1rem;
+			}
+		}
+
+		
+		/* Kundenfeedback */
+		.testimonials-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.testimonial-card {
+			background: var(--background1-color);
+			border-radius: 0px;
+			overflow: hidden;
+			box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+			transition: transform 0.5s ease;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.testimonial-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.testimonial-image {
+			position: relative;
+			height: 220px;
+			overflow: hidden;
+		}
+
+		.testimonial-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: brightness(0.9);
+			transition: transform 0.8s ease, filter 0.5s ease;
+		}
+
+		.testimonial-card:hover .testimonial-image img {
+			transform: scale(1.05);
+			filter: brightness(1);
+		}
+
+		.client-info {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--overlay);
+			padding: 15px;
+			color: white;
+		}
+
+		.client-name {
+			font-size: 1.2rem;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.client-event {
+			font-size: 0.9rem;
+			opacity: 0.8;
+		}
+
+		.testimonial-content {
+			padding: 25px;
+			position: relative;
+			flex-grow: 1;
+		}
+
+		.quote-icon {
+			position: absolute;
+			top: 10px;
+			left: 25px;
+			font-size: 4rem;
+			line-height: 1;
+			color: var(--accent1);
+			opacity: 0.2;
+			font-family: 'Playfair Display', serif;
+		}
+
+		blockquote {
+			margin: 20px 0 0 0;
+			font-style: italic;
+			font-size: 1.1rem;
+			line-height: 1.6;
+			color: var(--text-color);
+			position: relative;
+			z-index: 1;
+		}
+
+		.rating {
+			color: var(--accent1);
+			font-size: 1.3rem;
+			margin-top: 20px;
+			letter-spacing: 3px;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.testimonials-container {
+				grid-template-columns: 1fr;
+			}
+			
+			.testimonial-image {
+				height: 180px;
+			}
+			
+			blockquote {
+				font-size: 1rem;
+			}
 		}
 		
 		/* Kontakt */
@@ -636,8 +859,13 @@
         <h2>Über mich</h2>
         <div class="about-container">
             <div class="about-text">
-                <p>Hallo, ich bin Sebastian Pillinger, ein 33-jähriger Fotograf aus Graz. Seit 2025 bin ich selbstständig und blicke auf über 10 Jahre Erfahrung in der Fotografie zurück.</p>
-                <p>Meine Leidenschaft gilt der kreativen Gestaltung von Momenten – ob bei Hochzeiten, Events oder industriellen Projekten. Ich arbeite regelmäßig mit professionellen Fotografen zusammen und liebe es, Geschichten durch meine Bilder zu erzählen.</p>
+				<p>Hey, ich bin Sebastian! Ich liebe es, echte Momente einzufangen – die strahlenden Augen einer Braut, 
+					das ausgelassene Lachen auf einer Feier oder die besonderen Details eines einzigartigen Tages. 
+					Fotografie ist für mich mehr als ein Job – es ist meine Art, Geschichten zu erzählen.</p>
+                <p>Seit über 10 Jahren halte ich mit meiner Kamera Erinnerungen fest, sei es bei Hochzeiten, 
+					Events oder spannenden Projekten. Dabei ist mir eines besonders wichtig: Ihr sollt euch wohlfühlen! 
+					Denn die schönsten Bilder entstehen dann, wenn ihr einfach ihr selbst seid. 
+					Lass uns gemeinsam Momente schaffen, die bleiben!</p>
                 <a href="#contact" class="cta-button" aria-label="Kontaktiere mich">Jetzt Termin vereinbaren</a>
             </div>
             <div class="about-image">
@@ -647,31 +875,136 @@
     </section>
     
     <!-- Leistungen -->
-    <section id="services" class="scroll-animation">
-        <h2>Leistungen</h2>
-        <ul style="list-style-type: none; font-size: 1.6em;">
-            <li>Hochzeitsfotografie</li>
-            <li>Event- und Partyfotografie</li>
-            <li>Unternehmensfotografie</li>
-            <li>Hotelfotografie</li>
-            <li>Industrie- und Architekturfotografie</li>
-        </ul>
-    </section>
+	<section id="services" class="scroll-animation">
+		<h2>Leistungen</h2>
+		<div class="services-container">
+			<!-- Hochzeitsfotografie -->
+			<div class="service-card">
+				<div class="service-image">
+					<img src="bilder/hochzeit1.jpg" alt="Hochzeitsfotografie" loading="lazy">
+				</div>
+				<div class="service-content">
+					<h3>Hochzeitsfotografie</h3>
+					<p>Individuelle Begleitung Ihres besonderen Tages - von der Vorbereitung bis zum letzten Tanz. Natürliche, emotionale Aufnahmen, die die Magie des Moments einfangen.</p>
+					<ul class="service-features">
+						<li>✔ Vor-Ort-Termin & Planung</li>
+						<li>✔ 8-12 Stunden Coverage</li>
+						<li>✔ 300+ hochwertige Bilder</li>
+						<li>✔ Professionelle Bearbeitung</li>
+						<li>✔ Online-Galerie & USB-Stick</li>
+					</ul>
+					<div class="service-price">ab €1.490</div>
+					<a href="#contact" class="service-button">Anfragen</a>
+				</div>
+			</div>
+			
+			<!-- Eventfotografie -->
+			<div class="service-card">
+				<div class="service-image">
+					<img src="bilder/party1.jpg" alt="Eventfotografie" loading="lazy">
+				</div>
+				<div class="service-content">
+					<h3>Events & Partys</h3>
+					<p>Professionelle Dokumentation Ihrer Veranstaltung mit lebendigen, authentischen Bildern, die Stimmung und Atmosphäre perfekt transportieren.</p>
+					<ul class="service-features">
+						<li>✔ Individuelles Konzept</li>
+						<li>✔ 4-8 Stunden Coverage</li>
+						<li>✔ 150+ ausgewählte Bilder</li>
+						<li>✔ Schnelle Lieferung</li>
+						<li>✔ Social-Media-Optimierung</li>
+					</ul>
+					<div class="service-price">ab €790</div>
+					<a href="#contact" class="service-button">Anfragen</a>
+				</div>
+			</div>
+			
+			<!-- Sportfotografie -->
+			<div class="service-card">
+				<div class="service-image">
+					<img src="bilder/rr1.jpg" alt="Sportfotografie" loading="lazy">
+				</div>
+				<div class="service-content">
+					<h3>Sportveranstaltungen</h3>
+					<p>Dynamische Action-Aufnahmen, die die Energie und Leidenschaft des Sports einfangen. Perfekt für Vereine, Wettkämpfe und individuelle Athleten.</p>
+					<ul class="service-features">
+						<li>✔ Vorab-Besprechung</li>
+						<li>✔ Flexible Zeitpakete</li>
+						<li>✔ Hochgeschwindigkeitsaufnahmen</li>
+						<li>✔ Team- & Einzelporträts</li>
+						<li>✔ Schnittservice für Vereine</li>
+					</ul>
+					<div class="service-price">ab €590</div>
+					<a href="#contact" class="service-button">Anfragen</a>
+				</div>
+			</div>
+		</div>
+	</section>
     
     <!-- Kundenfeedback -->
-    <section id="testimonials" class="scroll-animation">
-        <h2>Kundenfeedback</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"Sebastian hat unsere Hochzeit perfekt festgehalten. Die Fotos sind atemberaubend!"</p>
-                <cite>– Anna und Markus</cite>
-            </div>
-            <div class="testimonial">
-                <p>"Professionelle Arbeit und eine Freude, mit ihm zusammenzuarbeiten."</p>
-                <cite>– Eventagentur Graz</cite>
-            </div>
-        </div>
-    </section>
+	<section id="testimonials" class="scroll-animation">
+		<h2>Was Kunden sagen</h2>
+		<div class="testimonials-container">
+			<!-- Testimonial 1 -->
+			<div class="testimonial-card">
+				<div class="testimonial-image">
+					<img src="bilder/hochzeit2.jpg" alt="Anna und Markus" loading="lazy">
+					<div class="client-info">
+						<div class="client-name">Anna & Markus</div>
+						<div class="client-event">Hochzeit in Graz</div>
+					</div>
+				</div>
+				<div class="testimonial-content">
+					<div class="quote-icon">“</div>
+					<blockquote>
+						<p>Sebastian hat unsere Hochzeit perfekt festgehalten. Er war unauffällig, aber immer zur richtigen Zeit am richtigen Platz. Die Fotos sind absolut natürlich und zeigen genau die Emotionen, wie wir sie erlebt haben!</p>
+					</blockquote>
+					<div class="rating">
+						★★★★★
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial 2 -->
+			<div class="testimonial-card">
+				<div class="testimonial-image">
+					<img src="bilder/linzm2.jpg" alt="Eventagentur Graz" loading="lazy">
+					<div class="client-info">
+						<div class="client-name">Eventagentur Graz</div>
+						<div class="client-event">Firmen-Event</div>
+					</div>
+				</div>
+				<div class="testimonial-content">
+					<div class="quote-icon">“</div>
+					<blockquote>
+						<p>Professionelle Arbeit und eine Freude, mit ihm zusammenzuarbeiten. Sebastian versteht es, die Essenz jeder Veranstaltung einzufangen. Die Bilder waren innerhalb von 48h fertig - unschlagbar!</p>
+					</blockquote>
+					<div class="rating">
+						★★★★★
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial 3 -->
+			<div class="testimonial-card">
+				<div class="testimonial-image">
+					<img src="bilder/rr2.jpg" alt="Sportverein" loading="lazy">
+					<div class="client-info">
+						<div class="client-name">ASV Sportverein</div>
+						<div class="client-event">Kasberg Inferno</div>
+					</div>
+				</div>
+				<div class="testimonial-content">
+					<div class="quote-icon">“</div>
+					<blockquote>
+						<p>Die Action-Aufnahmen von unserem Rennen sind atemberaubend! Sebastian hat selbst bei Regen und schwierigen Lichtverhältnissen fantastische Bilder geliefert. Absolute Empfehlung für Sportevents!</p>
+					</blockquote>
+					<div class="rating">
+						★★★★☆
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
     
     <!-- Kontakt -->
     <section id="contact" class="scroll-animation">
@@ -711,12 +1044,12 @@
 		});
         // Portfolio-Daten und Initialisierung
         const portfolioData = [
-            { src: "bilder/linzm1.jpg", alt: "Events", images: ["bilder/linzm1.jpg", "bilder/linzm2.jpg", "bilder/linzm3.jpg"] },
-            { src: "bilder/rr1.jpg", alt: "Kasberg-Inferno", images: ["bilder/rr1.jpg", "bilder/rr2.jpg", "bilder/rr3.jpg", "bilder/rr4.jpg", "bilder/rr5.jpg"] },
-            { src: "bilder/hochzeit1.jpg", alt: "Hochzeiten", images: ["bilder/hochzeit1.jpg", "bilder/hochzeit2.jpg", "bilder/hochzeit3.jpg"] },
+			{ src: "bilder/hochzeit1.jpg", alt: "Hochzeiten", images: ["bilder/hochzeit1.jpg", "bilder/hochzeit2.jpg", "bilder/hochzeit3.jpg"] },
+            { src: "bilder/party1.jpg", alt: "Events und Partys", images: ["bilder/party1.jpg", "bilder/party2.jpg", "bilder/party3.jpg"] },
+            { src: "bilder/linzm1.jpg", alt: "Sportveranstaltungen", images: ["bilder/linzm1.jpg", "bilder/linzm2.jpg", "bilder/linzm3.jpg", "bilder/rr1.jpg", "bilder/rr2.jpg", "bilder/rr3.jpg", "bilder/rr4.jpg", "bilder/rr5.jpg"] },
             { src: "bilder/tiere1.jpg", alt: "Haustiere", images: ["bilder/tiere1.jpg", "bilder/tiere2.jpg", "bilder/tiere3.jpg", "bilder/tiere4.jpg", "bilder/tiere5.jpg", "bilder/tiere6.jpg", "bilder/tiere7.jpg", "bilder/tiere8.jpg"] },
             { src: "bilder/wildlife1.jpg", alt: "Wildlife", images: ["bilder/wildlife1.jpg", "bilder/wildlife2.jpg", "bilder/wildlife3.jpg", "bilder/wildlife4.jpg", "bilder/wildlife5.jpg", "bilder/wildlife6.jpg"] },
-            { src: "bilder/party1.jpg", alt: "Partys", images: ["bilder/party1.jpg", "bilder/party2.jpg", "bilder/party3.jpg"] }
+            { src: "bilder/header.jpg", alt: "Landschaften", images: ["bilder/header.jpg"] }
         ];
 
         // DOM Elemente
